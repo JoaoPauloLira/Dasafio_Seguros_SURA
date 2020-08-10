@@ -26,6 +26,7 @@ import br.com.sura.model.Pedido;
 import br.com.sura.model.enums.Status;
 import br.com.sura.service.PedidoItemService;
 import br.com.sura.service.PedidoService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("v1")
@@ -38,6 +39,7 @@ public class EndPointPedido {
 
 	@PostMapping("/pedido")
 	@Transactional
+	@ApiOperation("criarPedido - Precisa esta logado")
 	public ResponseEntity<PedidoRetornoDto> criarPedido(@RequestBody @Valid FazerPedidoDto pedidoDto,
 			@AuthenticationPrincipal UserDetails userDetails) {
 
@@ -48,6 +50,7 @@ public class EndPointPedido {
 	}
 
 	@GetMapping("/pedido")
+	@ApiOperation("listaMeusPedidos - Precisa esta logado")
 	public ResponseEntity<List<PedidoRetornoDto>> listaMeusPedidos(@AuthenticationPrincipal UserDetails userDetails) {
 
 		Optional<List<Pedido>> pedidos = pedidoService.getPedidos(userDetails.getUsername());
@@ -59,6 +62,7 @@ public class EndPointPedido {
 	}
 
 	@GetMapping("/pedido/{id}")
+	@ApiOperation("listaMeusPedidosPesquisandoPorId - Precisa esta logado")
 	public ResponseEntity<PedidoRetornoDto> listaMeusPedidosPesquisandoPorId(@PathVariable Long id,
 			@AuthenticationPrincipal UserDetails userDetails) {
 
@@ -73,6 +77,7 @@ public class EndPointPedido {
 
 	@PutMapping("/pedido/{id}")
 	@Transactional
+	@ApiOperation("adicionarOuAlterarProdutoNoPedido - Precisa esta logado")
 	public ResponseEntity<PedidoRetornoDto> adicionarOuAlterarProdutoNoPedido(@PathVariable Long id,
 			@RequestBody @Valid FazerPedidoDto pedidoDto, @AuthenticationPrincipal UserDetails userDetails) {
 
@@ -93,6 +98,7 @@ public class EndPointPedido {
 
 	@PutMapping("/pedido/finalizar/{idPedido}")
 	@Transactional
+	@ApiOperation("finalizarPedido - Precisa esta logado")
 	public ResponseEntity<?> finalizarPedido(@PathVariable Long idPedido,
 			@AuthenticationPrincipal UserDetails userDetails) {
 
@@ -111,6 +117,7 @@ public class EndPointPedido {
 
 	@DeleteMapping("/pedido/cancelarPedidoItem/{idPedido}/{idPedidoItem}")
 	@Transactional
+	@ApiOperation("cancelarPedidoItem - Precisa esta logado")
 	public ResponseEntity<?> cancelarPedidoItem(@PathVariable Long idPedido, @PathVariable Long idPedidoItem,
 			@AuthenticationPrincipal UserDetails userDetails) {
 
@@ -131,6 +138,7 @@ public class EndPointPedido {
 
 	@DeleteMapping("/pedido/{idPedido}")
 	@Transactional
+	@ApiOperation("cancelarPedido - Precisa esta logado")
 	public ResponseEntity<?> cancelarPedido(@PathVariable Long idPedido,
 			@AuthenticationPrincipal UserDetails userDetails) {
 

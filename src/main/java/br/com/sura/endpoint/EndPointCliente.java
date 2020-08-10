@@ -52,6 +52,7 @@ public class EndPointCliente {
 	
 	@PostMapping("/cliente")
 	@Transactional
+	@ApiOperation("salvaCliente - Precisa esta logado")
 	public ResponseEntity<ClienteDto> salvaCliente(@RequestBody @Valid ClienteDto clienteDto, UriComponentsBuilder uriBuilder) {
 		Cliente cliente = clienteDto.newCliente();
 		
@@ -63,6 +64,7 @@ public class EndPointCliente {
 	
 	@PutMapping("/cliente/{id}")
 	@Transactional
+	@ApiOperation("atualizaCliente - Precisa esta logado e ser o proprio cliente para atualizar suas informações")
 	public ResponseEntity<ClienteDto> atualizaCliente(@PathVariable Long id,@RequestBody  @Valid ClienteDto clienteDto, @AuthenticationPrincipal UserDetails userDetails) {
 		Optional<Cliente> cliente = clienteService.getByIdClientes(id);
 		

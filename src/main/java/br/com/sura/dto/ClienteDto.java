@@ -120,9 +120,6 @@ public class ClienteDto {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public static List<ClienteDto> converter(Iterable<Cliente> listaCliente) {
 		List<Cliente> listaPopulada = new ArrayList<>();
