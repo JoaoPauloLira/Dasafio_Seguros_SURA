@@ -12,7 +12,7 @@ Senha:
 ```
 URLS:
 
-|Serviço|Url|Swagger|
+|Serviço|Url|Swagger/BD|
 |-------|---|-------|
 |API|http://localhost:8080/|http://localhost:8080/swagger-ui.html|
 |DOC|http://localhost:8080/|http://localhost:8080/v2/api-docs|
